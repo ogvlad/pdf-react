@@ -35,8 +35,8 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "pdfjs-dist": "^3.4.120",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "pdfjs-dist": "3.4.120",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   }
 }
