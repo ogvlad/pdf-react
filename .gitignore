@@ -3,6 +3,5 @@
 #launch.json folder
 .vscode/
 #Cache folder
-/assets/**
 /node_modules/**
 /.idea/**
