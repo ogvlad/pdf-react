@@ -40,6 +40,10 @@ export const Viewer = ({ src }: {src: string}) => {
 
         linkService.setViewer(pdfViewer)
 
+        if (src) {
+            setDocument(src, pdfViewer)
+        }
+
     }, [])
 
     return (
@@ -49,3 +53,29 @@ export const Viewer = ({ src }: {src: string}) => {
     )
 }
 
+const setDocument = (src: string, pdfViewer: PDFViewer) => {
+    setTimeout(
+        () =>
+            pdfjs
+                .getDocument(src)
+                .promise
+                .then((pdf) => {
+                    pdfViewer.setDocument(pdf)
+                    // this._destroyPdf()
+                    // this._pdfViewer.setDocument(pdf)
+                    // this._pdf = pdf
+
+                    // this.props.onSetNumPages && this.props.onSetNumPages(pdf.numPages)
+                    // this.setState({ pending: false })
+                })
+                .catch(() => {
+                    // this._destroyPdf()
+                    // this._pdfViewer.setDocument(null)
+                    // this.setState({ pending: false })
+                    // this.setState({
+                    //     errorMessage: i18n("Notification.Messages:ErrorOccurredDuringDataLoading"),
+                    // })
+                }),
+        100, // for some reason worker isn't available to load it immediately
+    )
+}
