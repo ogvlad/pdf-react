@@ -33,15 +33,15 @@ export const Viewer = ({ src }: {src: string}) => {
         const pdfViewer = new PDFViewer({
             eventBus,
             linkService,
-            findController,
+            findController: undefined,
             container: containerRef.current,
             l10n: undefined
         })
 
-        linkService.setViewer(pdfViewer)
+        // linkService.setViewer(pdfViewer)
 
         if (src) {
-            setDocument(src, pdfViewer)
+            setDocument(src, pdfViewer, linkService)
         }
 
     }, [])
@@ -53,29 +53,15 @@ export const Viewer = ({ src }: {src: string}) => {
     )
 }
 
-const setDocument = (src: string, pdfViewer: PDFViewer) => {
-    setTimeout(
-        () =>
-            pdfjs
-                .getDocument(src)
-                .promise
-                .then((pdf) => {
-                    pdfViewer.setDocument(pdf)
-                    // this._destroyPdf()
-                    // this._pdfViewer.setDocument(pdf)
-                    // this._pdf = pdf
+const setDocument = (src: string, pdfViewer: PDFViewer, linkService: PDFLinkService) => {
 
-                    // this.props.onSetNumPages && this.props.onSetNumPages(pdf.numPages)
-                    // this.setState({ pending: false })
-                })
-                .catch(() => {
-                    // this._destroyPdf()
-                    // this._pdfViewer.setDocument(null)
-                    // this.setState({ pending: false })
-                    // this.setState({
-                    //     errorMessage: i18n("Notification.Messages:ErrorOccurredDuringDataLoading"),
-                    // })
-                }),
-        100, // for some reason worker isn't available to load it immediately
-    )
+    const loadingTask = pdfjs.getDocument({
+        url: src,
+    })
+
+    setTimeout(async function () {
+        const pdfDocument = await loadingTask.promise;
+        pdfViewer.setDocument(pdfDocument);
+        linkService.setDocument(pdfDocument, null);
+    }, 100)
 }
