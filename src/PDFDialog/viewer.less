@@ -1,0 +1,49 @@
+@import '~app-components/app/styles/colors/colors-default.less';
+
+:local {
+  .errorMessageContainer {
+    margin: 0 0 3rem;
+    background-color: @clr-gray-950;
+    border: 1px solid @clr-gray-930;
+    border-radius: 5px;
+  }
+
+  .errorMessageText {
+    margin: 0;
+    padding: 2.5rem 1.75rem;
+    font-size: 1.5rem;
+    line-height: normal;
+    color: @clr-red-500;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .viewerError {
+    display: flex;
+    vertical-align: middle;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .errorButton {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: block;
+    color: @clr-white;
+    background-color: @clr-green-510 !important;
+    border-color: transparent !important;
+    border: 0px !important;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    &:hover {
+      color: @clr-white !important;
+      background-color: @clr-green-500 !important;
+      padding: 0 8px;
+      height: 32px;
+    }
+  }
+}

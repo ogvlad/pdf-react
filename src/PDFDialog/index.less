@@ -1,0 +1,180 @@
+@import '~app-components/app/styles/colors/colors-default.less';
+
+:local {
+  .container {
+    .pdfContainer {
+      background-color: @clr-gray-420;
+
+      .spinnerContainer {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .dialog {
+      &:hover .controls {
+        display: flex;
+      }
+    }
+
+    .paging {
+      position: absolute;
+    }
+
+    .controls {
+      display: none;
+
+      text-align: center;
+      color: @clr-white;
+      background: @clr-gray-905;
+      border-radius: 4px;
+      width: 350px;
+      height: 40px;
+      padding: 0 10px;
+
+      align-items: center;
+      justify-content: space-between;
+
+      position: absolute;
+      bottom: 10px;
+      left: ~'calc(50% - 175px)';
+
+      .icon {
+        border-radius: 4px;
+        font-size: 14px;
+        margin-right: 10px;
+        position: relative;
+        height: 30px;
+        width: 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: @clr-gray-300;
+          cursor: pointer;
+        }
+      }
+      .fitWidth {
+        font-size: 18px;
+      }
+      .section {
+        display: flex;
+        align-items: center;
+      }
+      .pager {
+        vertical-align: top;
+        margin-right: 30px;
+        font-size: 12px;
+
+        .input {
+          width: 30px;
+          height: 25px;
+          margin-left: 10px;
+          margin-right: 5px;
+          padding: 0 4px;
+          text-align: right;
+          position: relative;
+        }
+
+        .pagerNumber {
+          position: relative;
+          top: -1px;
+        }
+      }
+    }
+    .headerIcon {
+      position: absolute;
+      top: 20px;
+      color: @clr-white;
+      font-size: 16px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.minimizeIcon {
+        right: 80px;
+      }
+      &.expandIcon {
+        right: 55px;
+      }
+    }
+
+    .zoom {
+      display: inline-block;
+      position: absolute !important;
+      bottom: 30px;
+      left: 20px;
+
+      .icon {
+        font-size: 25px;
+        color: @clr-white;
+        display: block;
+        margin-bottom: 10px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+:global {
+  .page {
+    display: inline-block !important;
+    padding: 0 !important;
+    position: relative;
+    margin-bottom: 15px;
+    overflow: visible;
+    cursor: auto !important;
+
+    span.highlight {
+      background-color: orange;
+    }
+
+    span.highlight.selected {
+      background-color: red;
+    }
+
+    .textLayer {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      opacity: 0.4;
+      line-height: 1;
+
+      span::selection {
+        background-color: @clr-blue-500;
+        color: transparent;
+        text-shadow: none;
+      }
+
+      span {
+        position: absolute;
+        color: transparent;
+        cursor: text;
+        transform-origin: 0% 0%;
+        padding: 0;
+        margin: 0;
+        white-space: pre;
+      }
+    }
+  }
+
+  .pdfViewer {
+    position: relative;
+    text-align: center;
+  }
+}

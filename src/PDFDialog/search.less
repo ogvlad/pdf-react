@@ -1,0 +1,55 @@
+@import '~app-components/app/styles/colors/colors-default.less';
+
+:local {
+  .searchContainer {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+  }
+  .wrapSearch {
+    display: inline-block;
+
+    .icon {
+      padding: 0 5px;
+      margin-left: 1px;
+      border-radius: 4px;
+      width: 22px;
+      text-align: center;
+
+      &:hover {
+        background-color: @clr-gray-800;
+        cursor: pointer;
+      }
+    }
+  }
+  .search {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid @clr-white;
+    color: white;
+    font-size: 11px;
+    line-height: 25px;
+    padding-left: 3px;
+    position: relative;
+    margin-right: 10px;
+    top: -6px;
+    height: 25px;
+    width: 100px;
+
+    z-index: 1;
+  }
+  i.icon {
+    font-size: 22px;
+    color: @clr-white;
+    padding-right: 7px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+}
