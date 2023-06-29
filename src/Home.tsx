@@ -1,4 +1,4 @@
-import {  Viewer } from "./Viewer";
+import {  Viewer } from "./viewer";
 
 const sample = new URL("./samples/compressed.tracemonkey-pldi-09.pdf", import.meta.url);
 
