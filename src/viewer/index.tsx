@@ -25,12 +25,12 @@ export const Viewer = ({ src }: {src: string}) => {
         const pdfViewer = new PDFViewer({
             eventBus,
             linkService,
-            findController: undefined,
+            findController: findController,
             container: containerRef.current,
             l10n: undefined
         })
 
-        // linkService.setViewer(pdfViewer)
+        linkService.setViewer(pdfViewer)
 
         if (src) {
             setDocument(src, pdfViewer, linkService)

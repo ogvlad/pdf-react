@@ -26,24 +26,25 @@ export const ViewerDiv = styled("div")({
         right: 0,
         bottom: 0,
         lineHeight: 1,
-        opacity: 1
-    },
-    ".textLayer span": {
-        color: "black",
-        position: "absolute",
-        whiteSpace: "pre",
-        transformOrigin: "0% 0%",
-        border: "solid 1px rgba(255, 0, 0, 0.5)",
-        backgroundColor: "rgba(255, 255, 32, 0.1)",
-        boxSizing: "border-box"
-    },
-    ".textLayer br": {
-        color: "black",
-        position: "absolute",
-        whiteSpace: "pre",
-        transformOrigin: "0% 0%",
-        border: "solid 1px rgba(255, 0, 0, 0.5)",
-        backgroundColor: "rgba(255, 255, 32, 0.1)",
-        boxSizing: "border-box"
+        opacity: .3,
+
+        "span": {
+            color: "transparent",
+            position: "absolute",
+            whiteSpace: "pre",
+            transformOrigin: "0% 0%",
+            border: "solid 1px rgba(255, 0, 0, 0.5)",
+            backgroundColor: "rgba(255, 255, 32, 0.1)",
+            boxSizing: "border-box"
+        },
+        "br": {
+            color: "black",
+            position: "absolute",
+            whiteSpace: "pre",
+            transformOrigin: "0% 0%",
+            border: "solid 1px rgba(255, 0, 0, 0.5)",
+            backgroundColor: "rgba(255, 255, 32, 0.1)",
+            boxSizing: "border-box"
+        }
     }
 })
