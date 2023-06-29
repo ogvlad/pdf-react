@@ -25,6 +25,7 @@ export const ViewerDiv = styled("div")({
         top: 0,
         right: 0,
         bottom: 0,
+        overflow: "hidden",
         lineHeight: 1,
         opacity: .3,
 
@@ -36,6 +37,9 @@ export const ViewerDiv = styled("div")({
             border: "solid 1px rgba(255, 0, 0, 0.5)",
             backgroundColor: "rgba(255, 255, 32, 0.1)",
             boxSizing: "border-box"
+        },
+        "span::selection": {
+            backgroundColor: "blue",
         },
         "br": {
             color: "black",
