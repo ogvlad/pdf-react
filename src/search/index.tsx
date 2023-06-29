@@ -2,7 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export const SearchTextField = () => {
+export const SearchTextField = ({onChange}: {onChange: any }) => {
+
     return (
         <Box
             component="form"
@@ -12,7 +13,7 @@ export const SearchTextField = () => {
             noValidate
             autoComplete="off"
         >
-            <TextField id="filled-basic" label="Filled" variant="filled" />
+            <TextField id="filled-basic" label="Filled" variant="filled" onChange={onChange} />
         </Box>
     );
 }
