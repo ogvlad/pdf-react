@@ -3,9 +3,9 @@ import * as pdfjs from "pdfjs-dist/webpack"
 import { PDFViewer, PDFFindController, PDFLinkService, EventBus } from "pdfjs-dist/web/pdf_viewer.js"
 
 import PropTypes from "prop-types"
-import i18n from "@cirrus/legacy/features/core/shared/utils/i18n"
 import styles from "./viewer.less"
-import Button from "@cirrus/legacy/app-components/buttons/button"
+import {i18n} from "../mocks/useTranslations"
+import Button from '@mui/material/Button'
 
 class Viewer extends Component {
   static propTypes = {

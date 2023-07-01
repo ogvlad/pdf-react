@@ -3,18 +3,20 @@ import * as pdfjs from "pdfjs-dist/webpack"
 import { PDFViewer, PDFFindController, PDFLinkService, EventBus } from "pdfjs-dist/web/pdf_viewer.js"
 import { ContainerDiv, ViewerDiv } from "./parts"
 
-export const Viewer = ({ src, search }: {src: string, search: string}) => {
+import "./textLayer.css"
+
+interface IProps {
+    src: string;
+    eventBus: EventBus;
+    linkService: PDFLinkService;
+    findController: PDFFindController;
+}
+
+export const Viewer = (props: IProps) => {
+
+    const {src, eventBus, linkService, findController} = props
 
     const containerRef = useRef<HTMLDivElement>(null)
-    const eventBus = new EventBus()
-    const linkService = new PDFLinkService({
-        eventBus,
-    })
-    const findController = new PDFFindController({
-        eventBus,
-        linkService,
-        updateMatchesCountOnProgress: true,
-    })
 
     useEffect(() => {
 
@@ -25,6 +27,11 @@ export const Viewer = ({ src, search }: {src: string, search: string}) => {
             container: containerRef.current,
             l10n: undefined
         })
+        console.log(pdfViewer)
+
+        eventBus.on("find", (event) => {
+            console.log(pdfViewer)
+        })
 
         linkService.setViewer(pdfViewer)
 
@@ -32,29 +39,6 @@ export const Viewer = ({ src, search }: {src: string, search: string}) => {
             setDocument(src, pdfViewer, linkService)
         }
     }, [])
-
-    useEffect(() => {
-        console.log(search)
-
-        const find = (options) => {
-            console.log(`[PDF-FIND]`)
-            console.log(options)
-            eventBus.dispatch("find", {
-                source: window,
-                caseSensitive: false,
-                findPrevious: false,
-                highlightAll: true,
-                phraseSearch: true,
-                entireWord: false,
-                matchDiacritics: true,
-                ...options,
-            })
-        }
-
-        find({query: search})
-
-    }, [search])
-
 
     return (
         <ContainerDiv ref={containerRef}>
